@@ -1,0 +1,21 @@
+table, td {
+  border: 1px solid;
+}
+
+.board {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
+}
+
+.game-table {
+  grid-column: span 1;
+  width: fit-content;
+  height: fit-content;
+  overflow: scroll;
+
+  &__cell {
+    height: 30px;
+    width: 30px;
+  }
+}
