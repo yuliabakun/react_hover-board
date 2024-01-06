@@ -1,29 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getInitialData } from '../api/fetchClient';
-
-type InitData = {
-  id: string,
-  name: string,
-  field: number
-};
-
-type Context = {
-  initialData: InitData[],
-  currentGameMode: number,
-  setCurrentGameMode: React.Dispatch<React.SetStateAction<number>>,
-  isGameStarted: boolean,
-  setIsGameStarted: React.Dispatch<React.SetStateAction<boolean>>,
-  fetchError: boolean,
-  isLoading: boolean,
-  colouredCells: string[],
-  setColouredCells: React.Dispatch<React.SetStateAction<string[]>>,
-  setGameMode: (newMode: number) => void,
-};
+import { Context } from './types/Context';
+import { InitData } from './types/InitData';
 
 export const GameContext = React.createContext<Context>({
   initialData: [],
   currentGameMode: 0,
-  setCurrentGameMode: () =>{},
   isGameStarted: false,
   setIsGameStarted: () => {},
   fetchError: false,
@@ -72,7 +54,6 @@ export const GameProvider: React.FC<Props> = ({ children }) => {
   const value = {
     initialData,
     currentGameMode,
-    setCurrentGameMode,
     isGameStarted,
     setIsGameStarted,
     fetchError,

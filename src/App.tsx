@@ -11,15 +11,11 @@ export const App: React.FC = () => {
 
   return (
     <div className="App container">
-      <header className="App__header title">
+      <header className="title my-4">
         Hover Board
       </header>
 
       {isLoading && <Loader />}
-
-      {!isLoading && !isGameStarted && (
-        <h2>Please pick mode and press Start to continue</h2>
-      )}
 
       {!isLoading && (
         <StartGameSection />
@@ -30,4 +26,4 @@ export const App: React.FC = () => {
       )}
     </div>
   );
-}
+};

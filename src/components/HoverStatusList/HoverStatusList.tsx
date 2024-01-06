@@ -5,17 +5,20 @@ import './HoverStatusList.scss';
 export const HoverStatusList: React.FC = () => {
   const { colouredCells } = useContext(GameContext);
 
-  return (
-    <div>
-      <h3>Hover Squares</h3>
+  const getCellName = (cell: string): string => {
+    const cellRow = cell.split('-').at(1);
+    const cellCol = cell.split('-').at(2);
 
-      <ul className="hover-list">
-        {colouredCells.map(item => (
-          <li key={item} className="hover-list__item notification is-warning is-light">
-            {`row ${item.split('-').at(1)} col ${item.split('-').at(2)}`}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+    return `row ${cellRow} col ${cellCol}`;
+  };
+
+  return (
+    <ul>
+      {colouredCells.map(item => (
+        <li key={item} className="list-item">
+          {getCellName(item)}
+        </li>
+      ))}
+    </ul>
+  );
+};

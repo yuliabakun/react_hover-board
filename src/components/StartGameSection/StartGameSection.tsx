@@ -7,36 +7,59 @@ export const StartGameSection: React.FC = () => {
     initialData,
     currentGameMode,
     setGameMode,
+    setColouredCells,
+    isGameStarted,
     setIsGameStarted,
+    fetchError,
   } = useContext(GameContext);
 
-  return (
-    <div className="game-setup box">
-      <div className="select">
-        <select
-          name="game-modes-select"
-          defaultValue="selectOption"
-          onChange={event => setGameMode(+event.target.value)}
-        >
-          <option value="selectOption" disabled>
-            Pick mode
-          </option>
+  const handleGameStart = () => {
+    if (isGameStarted) {
+      setColouredCells([]);
+    } else {
+      setIsGameStarted(true);
+    }
+  };
 
-          {initialData.map(item => (
-            <option key={item.id} value={item.field}>
-              {item.name}
+  return (
+    <div className="setup box">
+      <div className="setup-controls">
+        <div className="select">
+          <select
+            name="game-mode-select"
+            defaultValue="pickOption"
+            onChange={event => setGameMode(+event.target.value)}
+          >
+            <option value="pickOption" disabled>
+              Pick mode
             </option>
-          ))}
-        </select>
+
+            {initialData.map(item => (
+              <option key={item.id} value={item.field}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <button
+          className="button is-info is-uppercase ml-4"
+          disabled={!currentGameMode}
+          onClick={handleGameStart}
+        >
+          Start
+        </button>
       </div>
 
-      <button
-        className="game-setup__start button is-info"
-        disabled={!currentGameMode}
-        onClick={() => setIsGameStarted(true)}
-      >
-        Start
-      </button>
+      {fetchError && (
+        <p className="has-text-weight-bold">Sorry, server is unavailable</p>)}
+
+      {!fetchError && !isGameStarted && (
+        <p>Please pick mode and press Start to continue</p>)}
+
+      {!fetchError && isGameStarted && (
+        <p className="has-text-weight-bold">Hover Squares</p>
+      )}
     </div>
   )
 };

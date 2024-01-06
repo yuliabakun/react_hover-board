@@ -2,15 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import './HoverBoard.scss';
 import { GameContext } from '../../utils/GameProvider';
 import { HoverStatusList } from '../HoverStatusList';
-import { Cell } from '../../utils/types/Cell';
 
 export const HoverBoard: React.FC = () => {
+  const [board, setBoard] = useState<string[][]>([]);
   const {
     currentGameMode,
     colouredCells,
     setColouredCells,
   } = useContext(GameContext);
-  const [board, setBoard] = useState<Cell[][]>([]);
 
   useEffect(() => {
     const createBoard = () => {
@@ -20,9 +19,9 @@ export const HoverBoard: React.FC = () => {
         const newRow = [];
 
         for (let col = 1; col <= currentGameMode; col++) {
-          const id = `item-${row}-${col}`;
+          const cell = `item-${row}-${col}`;
 
-          newRow.push({ id, row, col });
+          newRow.push(cell);
         }
 
         newBoard.push(newRow);
@@ -45,8 +44,8 @@ export const HoverBoard: React.FC = () => {
   };
 
   return (
-    <div className="game-container">
-      <div className="board">
+    <div className="game">
+      <div className="game__board">
         <table className="game-table">
           <tbody>
             {board.map((row, rowIndex) => (
@@ -55,12 +54,12 @@ export const HoverBoard: React.FC = () => {
               >
                 {row.map((item) => (
                   <td
-                    key={item.id}
+                    key={item}
                     className="game-table__cell"
-                    onMouseOver={() => handleHover(item.id)}
-                    style={{ background: colouredCells.includes(item.id) ? 'lightblue' : 'white' }}
+                    onMouseOver={() => handleHover(item)}
+                    style={{ background: colouredCells.includes(item) ? 'lightblue' : 'white' }}
                   >
-                    <div className="content"></div>
+                    <div className="game-table__cell__content"></div>
                   </td>
                 ))}
               </tr>
@@ -69,7 +68,9 @@ export const HoverBoard: React.FC = () => {
         </table>
       </div>
 
-      <HoverStatusList />
+      <div className="game__status">
+        <HoverStatusList />
+      </div>
     </div>
   );
 };
