@@ -3,8 +3,8 @@ import './App.scss';
 import 'bulma';
 import { GameContext } from './utils/GameProvider';
 import { StartGameSection } from './components/StartGameSection';
-import { Loader } from './components/Loader';
 import { HoverBoard } from './components/HoverBoard';
+import { Loader } from './components/Loader';
 
 export const App: React.FC = () => {
   const { isLoading, isGameStarted } = useContext(GameContext);
@@ -17,13 +17,13 @@ export const App: React.FC = () => {
 
       {isLoading && <Loader />}
 
-      {!isGameStarted && (
+      {!isLoading && !isGameStarted && (
         <h2>Please pick mode and press Start to continue</h2>
       )}
 
-      <div className="App__game box">
+      {!isLoading && (
         <StartGameSection />
-      </div>
+      )}
 
       {!isLoading && isGameStarted && (
         <HoverBoard />
@@ -31,5 +31,3 @@ export const App: React.FC = () => {
     </div>
   );
 }
-
-export default App;

@@ -1,21 +1,32 @@
-table, td {
-  border: 1px solid;
-}
+
 
 .board {
   display: flex;
   justify-content: space-between;
   margin: 0 40px;
+  width: 90%;
+  height: fit-content;
+}
+
+td {
+  width: 30%;
+
+}
+
+td .content {
+  aspect-ratio: 1 / 1;
+}
+
+.game-container {
+  display: flex;
 }
 
 .game-table {
-  grid-column: span 1;
-  width: fit-content;
-  height: fit-content;
   overflow: scroll;
 
   &__cell {
-    height: 30px;
+    max-height: 30px;
     width: 30px;
+    border: 1px solid;
   }
 }
