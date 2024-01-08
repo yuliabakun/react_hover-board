@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react_hover-board/static/css/main.c42f0ac0.css",
+    "main.css": "/react_hover-board/static/css/main.5df88db7.css",
     "main.js": "/react_hover-board/static/js/main.552c121f.js",
     "index.html": "/react_hover-board/index.html",
-    "main.c42f0ac0.css.map": "/react_hover-board/static/css/main.c42f0ac0.css.map",
+    "main.5df88db7.css.map": "/react_hover-board/static/css/main.5df88db7.css.map",
     "main.552c121f.js.map": "/react_hover-board/static/js/main.552c121f.js.map"
   },
   "entrypoints": [
-    "static/css/main.c42f0ac0.css",
+    "static/css/main.5df88db7.css",
     "static/js/main.552c121f.js"
   ]
 }
