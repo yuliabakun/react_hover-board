@@ -61,5 +61,5 @@ export const StartGameSection: React.FC = () => {
         <p className="has-text-weight-bold">Hover Squares</p>
       )}
     </div>
-  )
+  );
 };

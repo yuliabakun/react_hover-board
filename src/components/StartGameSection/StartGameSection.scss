@@ -1,9 +1,11 @@
+@import '../../utils/mixins.scss';
+
 .setup {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 580px) {
+  @include onMobile {
     flex-direction: column;
   }
 }

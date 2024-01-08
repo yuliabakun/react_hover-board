@@ -1,7 +1,7 @@
-import { InitData } from "./InitData";
+import { InitialData } from "./InitialData";
 
 export type Context = {
-  initialData: InitData[],
+  initialData: InitialData[],
   currentGameMode: number,
   isGameStarted: boolean,
   setIsGameStarted: React.Dispatch<React.SetStateAction<boolean>>,

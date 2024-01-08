@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getInitialData } from '../api/fetchClient';
 import { Context } from './types/Context';
-import { InitData } from './types/InitData';
+import { InitialData } from './types/InitialData';
 
 export const GameContext = React.createContext<Context>({
   initialData: [],
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const GameProvider: React.FC<Props> = ({ children }) => {
-  const [initialData, setInitialData] = useState<InitData[]>([]);
+  const [initialData, setInitialData] = useState<InitialData[]>([]);
   const [currentGameMode, setCurrentGameMode] = useState(0);
   const [fetchError, setFetchError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ export const GameProvider: React.FC<Props> = ({ children }) => {
 
   const getGameData = async () => {
     try {
-      const data: InitData[] = await getInitialData();
+      const data: InitialData[] = await getInitialData();
 
       setInitialData(data);
     } catch {
@@ -67,5 +67,5 @@ export const GameProvider: React.FC<Props> = ({ children }) => {
     <GameContext.Provider value={value}>
       {children}
     </GameContext.Provider>
-  )
+  );
 };

@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .game {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -7,10 +9,18 @@
 
   &__board {
     grid-column: 1 / 11;
+
+    @include onMobile {
+      grid-column: 1 / -1;
+    }
   }
 
   &__status {
     grid-column: 11 / -1;
+
+    @include onMobile {
+      grid-column: 1 / -1;
+    }
   }
 }
 
