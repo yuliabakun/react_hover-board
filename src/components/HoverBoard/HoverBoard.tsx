@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './HoverBoard.scss';
-import { GameContext } from '../../utils/GameProvider';
 import { HoverStatusList } from '../HoverStatusList';
+import { GameContext } from '../../utils/GameProvider';
+import { createBoard } from '../../utils/CreateBoard';
 
 export const HoverBoard: React.FC = () => {
   const [board, setBoard] = useState<string[][]>([]);
@@ -12,25 +13,9 @@ export const HoverBoard: React.FC = () => {
   } = useContext(GameContext);
 
   useEffect(() => {
-    const createBoard = () => {
-      const newBoard = [];
+    const newBoard = createBoard(currentGameMode);
 
-      for (let row = 1; row <= currentGameMode; row++) {
-        const newRow = [];
-
-        for (let col = 1; col <= currentGameMode; col++) {
-          const cell = `item-${row}-${col}`;
-
-          newRow.push(cell);
-        }
-
-        newBoard.push(newRow);
-      }
-
-      setBoard(newBoard);
-    };
-
-    createBoard();
+    setBoard(newBoard);
   }, [currentGameMode]);
 
   const handleHover = (itemId: string) => {
